@@ -35,7 +35,6 @@ function App() {
     <RootStyled>
       <h1>Vehicle Type</h1>
       <VehicleTypeSelect
-        defaultValue='Pickup'
         onChange={e => handleVehicleTypeChange(e)}>
         <option value=''>請選擇</option>
         <option value='Pickup'>Pickup</option>
