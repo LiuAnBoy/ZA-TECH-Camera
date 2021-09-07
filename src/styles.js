@@ -1,4 +1,35 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from 'styled-components';
+
+export const RootStyled = styled.div`
+  padding: 0 20px;
+
+  & > h1 {
+    text-align: center;
+  }
+`;
+
+export const VehicleTypeSelect = styled.select`
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  /* border-color: blue; */
+`;
+
+export const VehicleAngleSection = styled.div`
+  height: 50px;
+  border: 1px solid black;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  justify-content: space-between;
+
+  & > p {
+    margin: 0;
+    font-weight: 700;
+  }
+`;
 
 export const GlobalStyle = createGlobalStyle`
   * {

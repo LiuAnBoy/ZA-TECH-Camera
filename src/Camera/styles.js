@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from "styled-components";
+import styled, { keyframes, css } from 'styled-components';
 
 const flashAnimation = keyframes`
   from {
@@ -22,6 +22,7 @@ export const Container = styled.div`
   width: 100%;
   max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}px`};
   max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`};
+  height: 80%;
   overflow: hidden;
 `;
 
@@ -44,13 +45,19 @@ export const Video = styled.video`
 
 export const Overlay = styled.div`
   position: absolute;
-  top: 20px;
-  right: 20px;
-  bottom: 20px;
-  left: 20px;
-  box-shadow: 0px 0px 20px 56px rgba(0, 0, 0, 0.6);
-  border: 1px solid #ffffff;
-  border-radius: 10px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &> img {
+    width: 100%;
+    transform: rotate(90deg);
+  }
 `;
 
 export const Flash = styled.div`
@@ -72,10 +79,10 @@ export const Flash = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 75%;
-  min-width: 100px;
-  max-width: 250px;
-  margin-top: 24px;
-  padding: 12px 24px;
+  width: 70px;
+  height: 70px;
+  border-radius: 99px;
+  border: 0;
+  margin-top: 56px;
   background: silver;
 `;

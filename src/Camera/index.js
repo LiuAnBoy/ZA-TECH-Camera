@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import Measure from 'react-measure';
+import PictureSection from '../components/PictureSection';
 import { useUserMedia } from '../hooks/useUserMedia';
 import { useCardRatio } from '../hooks/useCardRatio';
 import { useOffsets } from '../hooks/useOffset';
@@ -9,7 +10,7 @@ import {
   Wrapper,
   Container,
   Flash,
-  // Overlay,
+  Overlay,
   Button,
 } from './styles';
 
@@ -18,7 +19,7 @@ const CAPTURE_OPTIONS = {
   video: { facingMode: 'environment' },
 };
 
-function Camera({ onCapture, onClear }) {
+function Camera({ vehicleType, vehicleAngle }) {
   const canvasRef = useRef();
   const videoRef = useRef();
 
@@ -26,6 +27,7 @@ function Camera({ onCapture, onClear }) {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isCanvasEmpty, setIsCanvasEmpty] = useState(true);
   const [isFlashing, setIsFlashing] = useState(false);
+  const [cardImage, setCardImage] = useState();
 
   const mediaStream = useUserMedia(CAPTURE_OPTIONS);
   const [aspectRatio, calculateRatio] = useCardRatio(1.586);
@@ -43,7 +45,8 @@ function Camera({ onCapture, onClear }) {
   function handleResize(contentRect) {
     setContainer({
       width: contentRect.bounds.width,
-      height: Math.round(contentRect.bounds.width / aspectRatio),
+      // height: Math.round(contentRect.bounds.width / aspectRatio),
+      height: 480,
     });
   }
 
@@ -68,7 +71,7 @@ function Camera({ onCapture, onClear }) {
       container.height
     );
 
-    canvasRef.current.toBlob(blob => onCapture(blob), 'image/jpeg', 1);
+    canvasRef.current.toBlob(blob => setCardImage(blob), 'image/jpeg', 1);
     setIsCanvasEmpty(false);
     setIsFlashing(true);
   }
@@ -77,7 +80,6 @@ function Camera({ onCapture, onClear }) {
     const context = canvasRef.current.getContext('2d');
     context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
     setIsCanvasEmpty(true);
-    onClear();
   }
 
   if (!mediaStream) {
@@ -108,24 +110,34 @@ function Camera({ onCapture, onClear }) {
               }}
             />
 
-            {/* <Overlay hidden={!isVideoPlaying} /> */}
+            <Overlay hidden={!isVideoPlaying}>
+              <img
+                src={`./SDK/${vehicleType}/${vehicleAngle}@2x.png`}
+                alt='guide-image'
+              />
+            </Overlay>
 
             <Canvas
               ref={canvasRef}
               width={container.width}
               height={container.height}
             />
-
+            {/* 
             <Flash
               flash={isFlashing}
               onAnimationEnd={() => setIsFlashing(false)}
-            />
+            /> */}
           </Container>
 
-          {isVideoPlaying && (
-            <Button onClick={isCanvasEmpty ? handleCapture : handleClear}>
-              {isCanvasEmpty ? 'Take a picture' : 'Take another picture'}
-            </Button>
+          {isVideoPlaying && <Button onClick={handleCapture} />}
+
+          {isCanvasEmpty ? null : (
+            <PictureSection
+              vehicleType={vehicleType}
+              vehicleAngle={vehicleAngle}
+              cardImage={cardImage}
+              onPictureClose={handleClear}
+            />
           )}
         </Wrapper>
       )}
