@@ -41,8 +41,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
     height: 100%;
     padding: 32px;
     margin: 0;

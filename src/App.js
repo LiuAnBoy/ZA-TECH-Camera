@@ -75,6 +75,8 @@ function App() {
         vehicleType={vehicleType}
         vehicleAngle={vehicleAngle}
       />
+
+      <GlobalStyle />
     </RootStyled>
   );
 }

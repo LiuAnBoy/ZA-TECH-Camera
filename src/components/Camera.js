@@ -16,7 +16,7 @@ const CameraSection = ({
   return (
     <RootStyled style={{ display: isCameraOpen ? 'initial' : 'none' }}>
       {isCameraOpen && (
-        <div>
+        <div className="camera-container">
           <Camera vehicleAngle={vehicleAngle} vehicleType={vehicleType} />
           <div>
             {/* <input type='file' accept='image/*' capture='filesystem' /> */}
@@ -39,6 +39,7 @@ const RootStyled = styled.div`
   background-color: black;
   top: 0;
   left: 0;
+  overflow: hidden;
 
   .closeCamera {
     font-size: 24px;
@@ -46,6 +47,12 @@ const RootStyled = styled.div`
     position: absolute;
     bottom: 20px;
     right: 20px;
+  }
+
+  .camera-container {
+    @media (orientation: landscape) {
+      height: 100vh !important;
+    }
   }
 `;
 

@@ -23,9 +23,6 @@ function Camera({ vehicleType, vehicleAngle }) {
   const canvasRef = useRef();
   const videoRef = useRef();
 
-  console.log(vehicleAngle);
-  console.log(vehicleType);
-
   const [container, setContainer] = useState({ width: 0, height: 0 });
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isCanvasEmpty, setIsCanvasEmpty] = useState(true);
@@ -46,11 +43,9 @@ function Camera({ vehicleType, vehicleAngle }) {
   }
 
   function handleResize(contentRect) {
-    console.log(contentRect);
     setContainer({
       width: contentRect.bounds.width,
-      // height: Math.round(contentRect.bounds.width / aspectRatio),
-      height: 480,
+      height: Math.round(contentRect.bounds.width / aspectRatio),
     });
   }
 
@@ -90,8 +85,6 @@ function Camera({ vehicleType, vehicleAngle }) {
     return null;
   }
 
-  // const overlay = require('./SDK/Pickup/01front@2x.png');
-
   return (
     <Measure bounds onResize={handleResize}>
       {({ measureRef }) => (
@@ -103,6 +96,7 @@ function Camera({ vehicleType, vehicleAngle }) {
             style={{
               height: `${container.height}px`,
             }}>
+              
             <Video
               ref={videoRef}
               hidden={!isVideoPlaying}
