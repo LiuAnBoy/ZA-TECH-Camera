@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
+import Head from './components/Head';
 import Camera from './Camera/index';
 import {
   Root,
@@ -33,9 +34,9 @@ function App() {
 
   return (
     <RootStyled>
+      <Head />
       <h1>Vehicle Type</h1>
-      <VehicleTypeSelect
-        onChange={e => handleVehicleTypeChange(e)}>
+      <VehicleTypeSelect onChange={e => handleVehicleTypeChange(e)}>
         <option value=''>請選擇</option>
         <option value='Pickup'>Pickup</option>
         <option value='Car'>Car</option>
