@@ -13,8 +13,6 @@ export const VehicleTypeSelect = styled.select`
   left: 50%;
   transform: translateX(-50%);
   width: 200px;
-  font-size: 16px;
-  /* border-color: blue; */
 `;
 
 export const VehicleAngleSection = styled.div`

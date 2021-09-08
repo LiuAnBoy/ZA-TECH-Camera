@@ -57,6 +57,16 @@ const PictureSection = ({
   vehicleType,
   vehicleAngle,
 }) => {
+  const callBackObj = {
+    type: vehicleType,
+    angle: vehicleAngle,
+    blob: cardImage,
+  };
+
+  const onPictureSend = () => {
+    console.log(callBackObj);
+  };
+
   return (
     <RootStyled>
       <div className='picture-container'>
@@ -64,7 +74,7 @@ const PictureSection = ({
       </div>
 
       <div className='pic-button-group'>
-        <div className='pic-accept' onClick={onPictureClose}>
+        <div className='pic-accept' onClick={onPictureSend}>
           送出
         </div>
         <div className='pic-recap' onClick={onPictureClose}>
