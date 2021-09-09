@@ -50,6 +50,7 @@ const RootStyled = styled.div`
   }
 
   .camera-container {
+    height: 100%;
     @media (orientation: landscape) {
       height: 100vh !important;
     }

@@ -38,20 +38,23 @@ function Camera({ vehicleType, vehicleAngle }) {
     container.height
   );
 
+  console.log(videoRef.current && videoRef.current.videoWidth);
+  console.log(videoRef.current && videoRef.current.videoHeight);
+
   if (mediaStream && videoRef.current && !videoRef.current.srcObject) {
     videoRef.current.srcObject = mediaStream;
   }
 
   function handleResize(contentRect) {
     setContainer({
-      width: contentRect.bounds.width,
-      // height: Math.round(contentRect.bounds.width / aspectRatio),
-      height: 480,
+      width: document.body.clientWidth,
+      height: document.body.clientHeight,
+      // height: 480,
     });
   }
 
   function handleCanPlay() {
-    calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
+    // calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
     setIsVideoPlaying(true);
     videoRef.current.play();
   }
@@ -59,10 +62,12 @@ function Camera({ vehicleType, vehicleAngle }) {
   function handleCapture() {
     const context = canvasRef.current.getContext('2d');
 
+    console.log(container);
+
     context.drawImage(
       videoRef.current,
-      offsets.x,
-      offsets.y,
+      0,
+      0,
       container.width,
       container.height,
       0,
@@ -86,8 +91,6 @@ function Camera({ vehicleType, vehicleAngle }) {
     return null;
   }
 
-  // const overlay = require('./SDK/Pickup/01front@2x.png');
-
   return (
     <Measure bounds onResize={handleResize}>
       {({ measureRef }) => (
@@ -106,13 +109,14 @@ function Camera({ vehicleType, vehicleAngle }) {
               autoPlay
               playsInline
               muted
-              style={{
-                top: `-${offsets.y}px`,
-                left: `-${offsets.x}px`,
-              }}
+              height={container.height}
+              // style={{
+              //   top: `-${offsets.y}px`,
+              //   left: `-${offsets.x}px`,
+              // }}
             />
 
-            <Overlay hidden={!isVideoPlaying}>
+            {/* <Overlay hidden={!isVideoPlaying}>
               <img
                 className={
                   vehicleAngle === 'dashboard' ? 'dashboard-img' : 'side-img'
@@ -120,12 +124,12 @@ function Camera({ vehicleType, vehicleAngle }) {
                 src={`./SDK/${vehicleType}/${vehicleAngle}@2x.png`}
                 alt='guide-image'
               />
-            </Overlay>
+            </Overlay> */}
 
             <Canvas
               ref={canvasRef}
-              width={container.width}
-              height={container.height}
+              width={document.body.clientWidth}
+              height={document.body.clientHeight}
             />
             {/* 
             <Flash

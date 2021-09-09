@@ -75,10 +75,10 @@ const PictureSection = ({
 
       <div className='pic-button-group'>
         <div className='pic-accept' onClick={onPictureSend}>
-          送出
+          Upload
         </div>
         <div className='pic-recap' onClick={onPictureClose}>
-          重新攝影
+          Retake
         </div>
       </div>
     </RootStyled>

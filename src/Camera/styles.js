@@ -11,10 +11,11 @@ const flashAnimation = keyframes`
 `;
 
 export const Wrapper = styled.div`
-  display: flex;
+  /* display: flex;
   flex-flow: column;
-  align-items: center;
+  align-items: center; */
   width: 100%;
+  height: 100vh;
 
   @media (orientation: landscape) {
     flex-flow: row;
@@ -24,8 +25,8 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   position: relative;
   width: 100%;
-  max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}px`};
-  max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`};
+  /* max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}px`};
+  max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`}; */
   overflow: hidden;
 
   @media (orientation: landscape) {
@@ -64,7 +65,8 @@ export const Overlay = styled.div`
 
   & > img {
     width: 100%;
-    height: 60%;
+    height: 70%;
+    /* transform: rotate(90deg); */
     z-index: 9999;
 
     @media (orientation: landscape) {
@@ -72,10 +74,6 @@ export const Overlay = styled.div`
       width: 100%;
       height: 70%;
     }
-  }
-
-  .dashboard-img {
-    height: 45%;
   }
 `;
 
@@ -104,6 +102,9 @@ export const Button = styled.button`
   border: 0;
   margin-top: 56px;
   background: silver;
+  z-index: 999;
+  position: absolute;
+  bottom: 0;
 
   @media (orientation: landscape) {
     position: relative;
