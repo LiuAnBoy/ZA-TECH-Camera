@@ -68,12 +68,12 @@ function Camera({ vehicleType, vehicleAngle }) {
       videoRef.current,
       0,
       0,
-      container.width,
-      container.height,
-      0,
-      0,
-      container.width,
-      container.height
+      // container.width,
+      // container.height,
+      // 0,
+      // 0,
+      // container.width,
+      // container.height
     );
 
     canvasRef.current.toBlob(blob => setCardImage(blob), 'image/jpeg', 1);
