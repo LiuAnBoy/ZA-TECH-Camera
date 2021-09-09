@@ -65,7 +65,7 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
       videoRef.current,
       0,
       0,
-      590,
+      500,
       300,
       0,
       0,
