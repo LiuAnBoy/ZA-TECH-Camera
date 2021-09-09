@@ -14,12 +14,12 @@ export const Wrapper = styled.div`
   /* display: flex;
   align-items: center;
   justify-content: center; */
-  width: 100%; */
+  width: 100%; 
   /* height: 100%;
 
   @media (orientation: landscape) {
     /* width: 100vw; */
-  }
+  /* } */
 `;
 
 export const Container = styled.div`
@@ -29,17 +29,17 @@ export const Container = styled.div`
   max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`}; */
 
   @media (orientation: landscape) {
-    width: 100% !important;
+    /* width: 100% !important; */
     /* height: initial !important; */
   }
 `;
 
 export const Canvas = styled.canvas`
-  position: absolute;
+  /* position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
-  right: 0;
+  right: 0; */
 `;
 
 export const Video = styled.video`
@@ -54,8 +54,8 @@ export const Video = styled.video`
   }
 
   @media (orientation: landscape) {
-    /* width: initial !important;
-    height: 110vh !important; */
+    /* width: 110vw !important; */
+    /* height: 110vh !important; */
   }
 `;
 
@@ -77,7 +77,7 @@ export const Overlay = styled.div`
     margin-bottom: 120px;
 
     @media (orientation: landscape) {
-      width: 75%;
+      width: 60%;
       height: 55%;
       margin-bottom: 0px;
       margin-left: -120px;
@@ -107,14 +107,14 @@ export const Button = styled.button`
   width: 70px;
   height: 70px;
   border-radius: 999px;
-  border: 0;
   margin-top: 56px;
-  background: silver;
+  background: #e6e6e6;
   z-index: 999;
   position: absolute;
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
+  border: 10px solid #b3b3b3;
 
   @media (orientation: landscape) {
     position: absolute;
