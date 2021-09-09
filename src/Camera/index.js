@@ -44,10 +44,10 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
   }
 
   function handleResize(contentRect) {
-    console.log(contentRect)
+    console.log(contentRect);
     setContainer({
-      width: contentRect.bounds.width,
-      height: contentRect.bounds.height,
+      width: document.body.clientWidth,
+      height: document.body.clientHeight,
       // height: 480,
     });
   }
@@ -63,11 +63,7 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
 
     console.log(container);
 
-    context.drawImage(
-      videoRef.current,
-      0,
-      0
-    );
+    context.drawImage(videoRef.current, 0, 0);
 
     canvasRef.current.toBlob(blob => setCardImage(blob), 'image/jpeg', 1);
     setIsCanvasEmpty(false);

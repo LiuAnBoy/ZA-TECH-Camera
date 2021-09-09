@@ -25,13 +25,13 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   position: relative;
   width: 100%;
-  max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}px`};
-  max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`};
+  /* max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}px`};
+  max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`}; */
   overflow: hidden;
 
   @media (orientation: landscape) {
-    /* width: 100vw !important; */
-    height: 100vh !important;
+    width: 100vw !important;
+    /* height: 100vh !important; */
   }
 `;
 
@@ -47,6 +47,8 @@ export const Video = styled.video`
   position: absolute;
   height: 100vh !important;
   width: initial !important;
+  /* aspect-ratio: 1.5; */
+  
 
   &::-webkit-media-controls-play-button {
     display: none !important;
