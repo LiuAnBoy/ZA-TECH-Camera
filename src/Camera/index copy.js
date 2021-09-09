@@ -12,6 +12,7 @@ import {
   Flash,
   Overlay,
   Button,
+  closeIcon,
 } from './styles';
 
 const CAPTURE_OPTIONS = {
@@ -19,7 +20,7 @@ const CAPTURE_OPTIONS = {
   video: { facingMode: 'environment' },
 };
 
-function Camera({ vehicleType, vehicleAngle }) {
+function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
   const canvasRef = useRef();
   const videoRef = useRef();
 
@@ -43,14 +44,16 @@ function Camera({ vehicleType, vehicleAngle }) {
   }
 
   function handleResize(contentRect) {
+    console.log(contentRect);
     setContainer({
-      width: contentRect.bounds.width,
-      height: Math.round(contentRect.bounds.width / aspectRatio),
+      width: document.body.clientWidth,
+      height: document.body.clientHeight,
+      // height: 480,
     });
   }
 
   function handleCanPlay() {
-    calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
+    // calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
     setIsVideoPlaying(true);
     videoRef.current.play();
   }
@@ -58,16 +61,14 @@ function Camera({ vehicleType, vehicleAngle }) {
   function handleCapture() {
     const context = canvasRef.current.getContext('2d');
 
+    console.log(container);
+
     context.drawImage(
       videoRef.current,
-      offsets.x,
-      offsets.y,
-      container.width,
-      container.height,
       0,
       0,
-      container.width,
-      container.height
+      // container.width,
+      // container.height
     );
 
     canvasRef.current.toBlob(blob => setCardImage(blob), 'image/jpeg', 1);
@@ -96,7 +97,6 @@ function Camera({ vehicleType, vehicleAngle }) {
             style={{
               height: `${container.height}px`,
             }}>
-              
             <Video
               ref={videoRef}
               hidden={!isVideoPlaying}
@@ -104,14 +104,17 @@ function Camera({ vehicleType, vehicleAngle }) {
               autoPlay
               playsInline
               muted
-              style={{
-                top: `-${offsets.y}px`,
-                left: `-${offsets.x}px`,
-              }}
+              // style={{
+              //   top: `-${offsets.y}px`,
+              //   left: `-${offsets.x}px`,
+              // }}
             />
 
             <Overlay hidden={!isVideoPlaying}>
               <img
+                className={
+                  vehicleAngle === 'dashboard' ? 'dashboard-img' : 'side-img'
+                }
                 src={`./SDK/${vehicleType}/${vehicleAngle}@2x.png`}
                 alt='guide-image'
               />
@@ -119,11 +122,11 @@ function Camera({ vehicleType, vehicleAngle }) {
 
             <Canvas
               ref={canvasRef}
-              width={container.width}
-              height={container.height}
+              width={document.body.clientWidth}
+              height={document.body.clientHeight}
             />
-            {/* 
-            <Flash
+
+            {/* <Flash
               flash={isFlashing}
               onAnimationEnd={() => setIsFlashing(false)}
             /> */}

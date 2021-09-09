@@ -48,7 +48,6 @@ export const Video = styled.video`
   height: 100vh !important;
   width: initial !important;
   /* aspect-ratio: 1.5; */
-  
 
   &::-webkit-media-controls-play-button {
     display: none !important;

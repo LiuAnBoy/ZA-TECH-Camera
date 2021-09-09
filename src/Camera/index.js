@@ -63,7 +63,13 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
 
     console.log(container);
 
-    context.drawImage(videoRef.current, 0, 0);
+    context.drawImage(
+      videoRef.current,
+      0,
+      0
+      // container.width,
+      // container.height
+    );
 
     canvasRef.current.toBlob(blob => setCardImage(blob), 'image/jpeg', 1);
     setIsCanvasEmpty(false);
@@ -116,8 +122,8 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
 
             <Canvas
               ref={canvasRef}
-              width={container.width - 50}
-              height={container.height - 10}
+              width={document.body.clientWidth - 40}
+              height={document.body.clientHeight - 10}
             />
 
             {/* <Flash

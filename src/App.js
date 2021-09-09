@@ -34,7 +34,7 @@ function App() {
   };
 
   return (
-    <RootStyled>
+    <RootStyled >
       <Head />
       <h4>Please choose vehicle type</h4>
       <VehicleTypeSelect onChange={e => handleVehicleTypeChange(e)}>
