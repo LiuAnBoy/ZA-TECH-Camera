@@ -39,17 +39,15 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
     container.height
   );
 
-  console.log(videoRef.current && videoRef.current.videoWidth);
-  console.log(videoRef.current && videoRef.current.videoHeight);
-
   if (mediaStream && videoRef.current && !videoRef.current.srcObject) {
     videoRef.current.srcObject = mediaStream;
   }
 
   function handleResize(contentRect) {
+    console.log(contentRect)
     setContainer({
-      width: document.body.clientWidth,
-      height: document.body.clientHeight,
+      width: contentRect.bounds.width,
+      height: contentRect.bounds.height,
       // height: 480,
     });
   }
@@ -69,12 +67,6 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
       videoRef.current,
       0,
       0
-      // container.width,
-      // container.height,
-      // 0,
-      // 0,
-      // container.width,
-      // container.height
     );
 
     canvasRef.current.toBlob(blob => setCardImage(blob), 'image/jpeg', 1);
@@ -91,13 +83,6 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
   if (!mediaStream) {
     return null;
   }
-
-  const landscape = () => {
-    const clientWidth = document.body.clientWidth;
-    const clientHeight = document.body.clientHeight;
-
-    
-  };
 
   return (
     <Measure bounds onResize={handleResize}>
@@ -117,7 +102,6 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
               autoPlay
               playsInline
               muted
-              height={container.height}
               // style={{
               //   top: `-${offsets.y}px`,
               //   left: `-${offsets.x}px`,
@@ -136,14 +120,14 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
 
             <Canvas
               ref={canvasRef}
-              width={document.body.clientWidth}
-              height={document.body.clientHeight}
+              width={container.width}
+              height={container.height}
             />
 
-            <Flash
+            {/* <Flash
               flash={isFlashing}
               onAnimationEnd={() => setIsFlashing(false)}
-            />
+            /> */}
           </Container>
 
           {isVideoPlaying && <Button onClick={handleCapture} />}

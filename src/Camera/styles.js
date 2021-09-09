@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
   flex-flow: column;
   align-items: center; */
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
   @media (orientation: landscape) {
     width: 100vw;
@@ -25,12 +25,12 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   position: relative;
   width: 100%;
-  /* max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}px`};
-  max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`}; */
+  max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}px`};
+  max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`};
   overflow: hidden;
 
   @media (orientation: landscape) {
-    width: 100vw !important;
+    /* width: 100vw !important; */
     height: 100vh !important;
   }
 `;
@@ -45,6 +45,8 @@ export const Canvas = styled.canvas`
 
 export const Video = styled.video`
   position: absolute;
+  height: 100vh !important;
+  width: initial !important;
 
   &::-webkit-media-controls-play-button {
     display: none !important;
@@ -123,18 +125,5 @@ export const Button = styled.button`
     top: 50%;
     transform: translateY(-50%);
     margin-top: 0;
-  }
-`;
-
-export const closeIcon = styled.div`
-  z-index: 1000;
-  position: absolute;
-  bottom: 0;
-  width: 30px;
-  height: 30px;
-
-  & > img {
-    width: 30px;
-    height: 30px;
   }
 `;
