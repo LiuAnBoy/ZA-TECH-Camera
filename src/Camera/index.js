@@ -116,8 +116,8 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
 
             <Canvas
               ref={canvasRef}
-              width={container.width}
-              height={container.height}
+              width={container.width - 50}
+              height={container.height - 10}
             />
 
             {/* <Flash
