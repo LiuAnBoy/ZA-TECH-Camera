@@ -11,14 +11,14 @@ const flashAnimation = keyframes`
 `;
 
 export const Wrapper = styled.div`
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+  justify-content: center; */
+  width: 100%; */
+  /* height: 100%;
 
   @media (orientation: landscape) {
-    width: 100vw;
+    /* width: 100vw; */
   }
 `;
 
@@ -29,8 +29,8 @@ export const Container = styled.div`
   max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`}; */
 
   @media (orientation: landscape) {
-    width: 100vw !important;
-    /* height: 100vh !important; */
+    width: 100% !important;
+    /* height: initial !important; */
   }
 `;
 
@@ -54,8 +54,8 @@ export const Video = styled.video`
   }
 
   @media (orientation: landscape) {
-    /* width: 100vw !important;
-    height: initial !important; */
+    /* width: initial !important;
+    height: 110vh !important; */
   }
 `;
 

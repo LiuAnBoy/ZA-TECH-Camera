@@ -84,10 +84,11 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
         <Wrapper>
           <Container
             ref={measureRef}
-            maxHeight={videoRef.current && videoRef.current.videoHeight}
-            maxWidth={videoRef.current && videoRef.current.videoWidth}
+            // maxHeight={videoRef.current && videoRef.current.videoHeight}
+            // maxWidth={videoRef.current && videoRef.current.videoWidth}
             style={{
-              height: `${container.height}px`,
+              // height: `${container.height}px`,
+              // width: `${container.width}px`
             }}>
             <Video
               ref={videoRef}
