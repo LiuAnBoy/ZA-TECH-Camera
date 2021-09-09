@@ -114,6 +114,9 @@ function Camera({ vehicleType, vehicleAngle }) {
 
             <Overlay hidden={!isVideoPlaying}>
               <img
+                className={
+                  vehicleAngle === 'dashboard' ? 'dashboard-img' : 'side-img'
+                }
                 src={`./SDK/${vehicleType}/${vehicleAngle}@2x.png`}
                 alt='guide-image'
               />

@@ -49,7 +49,6 @@ export const Video = styled.video`
     display: none !important;
     -webkit-appearance: none;
   }
-
 `;
 
 export const Overlay = styled.div`
@@ -65,8 +64,7 @@ export const Overlay = styled.div`
 
   & > img {
     width: 100%;
-    height: 70%;
-    /* transform: rotate(90deg); */
+    height: 60%;
     z-index: 9999;
 
     @media (orientation: landscape) {
@@ -74,6 +72,10 @@ export const Overlay = styled.div`
       width: 100%;
       height: 70%;
     }
+  }
+
+  .dashboard-img {
+    height: 45%;
   }
 `;
 

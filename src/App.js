@@ -23,6 +23,7 @@ function App() {
 
   const openCamera = e => {
     e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'auto' });
     setCameraOpen(true);
     setVehicleAngle(e.target.value);
   };
@@ -35,9 +36,9 @@ function App() {
   return (
     <RootStyled>
       <Head />
-      <h1>Vehicle Type</h1>
+      <h4>Please choose vehicle type</h4>
       <VehicleTypeSelect onChange={e => handleVehicleTypeChange(e)}>
-        <option value=''>請選擇</option>
+        <option value=''>Choose One vehicle type</option>
         <option value='Hatchback'>Hatchback</option>
         <option value='Minivan'>Minivan</option>
         <option value='Motorbike'>Motorbike</option>
@@ -58,7 +59,7 @@ function App() {
       </VehicleAngleSection>
 
       <VehicleAngleSection>
-        <p>Left of the Car</p>
+        <p>Left side of the Car</p>
         <button
           onClick={e => openCamera(e)}
           value='left'
@@ -68,7 +69,7 @@ function App() {
       </VehicleAngleSection>
 
       <VehicleAngleSection>
-        <p>Right of the Car</p>
+        <p>Right side of the Car</p>
         <button
           onClick={e => openCamera(e)}
           value='right'
@@ -78,7 +79,17 @@ function App() {
       </VehicleAngleSection>
 
       <VehicleAngleSection>
-        <p>Dashboard of the Car</p>
+        <p>Back of the Car</p>
+        <button
+          onClick={e => openCamera(e)}
+          value='rear'
+          disabled={vehicleType === '' ? true : false}>
+          Upload
+        </button>
+      </VehicleAngleSection>
+
+      <VehicleAngleSection>
+        <p>Car Dashboard</p>
         <button
           onClick={e => openCamera(e)}
           value='dashboard'
@@ -94,7 +105,7 @@ function App() {
         vehicleAngle={vehicleAngle}
       />
 
-      <GlobalStyle />
+      <GlobalStyle isCameraOpen={isCameraOpen}/>
     </RootStyled>
   );
 }

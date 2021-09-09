@@ -1,10 +1,13 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
 export const RootStyled = styled.div`
-  padding: 0 20px;
+  padding: 20px;
 
-  & > h1 {
+  & > h4 {
     text-align: center;
+    margin: 0;
+    margin-bottom: 16px;
+    letter-spacing: 0.6px;
   }
 `;
 
@@ -13,12 +16,17 @@ export const VehicleTypeSelect = styled.select`
   left: 50%;
   transform: translateX(-50%);
   width: 200px;
+  border-color: #ccefff;
+  margin-bottom: 20px;
+  font-family: 'Roboto';
+  font-weight: 700;
 `;
 
 export const VehicleAngleSection = styled.div`
-  height: 50px;
-  border: 1px solid black;
-  margin: 20px 0;
+  height: 60px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #f2f2f2;
   display: flex;
   align-items: center;
   padding: 0 20px;
@@ -27,6 +35,14 @@ export const VehicleAngleSection = styled.div`
   & > p {
     margin: 0;
     font-weight: 700;
+  }
+
+  & > button {
+    border: 0;
+    padding: 5px 20px;
+    border-radius: 99px;
+    color: #1ab6ff;
+    background-color: #ccefff;
   }
 `;
 
@@ -40,7 +56,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: ${({ isCameraOpen }) => (isCameraOpen ? 'hidden' : 'auto')}; 
     height: 100%;
     padding: 32px;
     margin: 0;
