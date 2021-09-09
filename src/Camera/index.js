@@ -61,20 +61,7 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
   function handleCapture() {
     const context = canvasRef.current.getContext('2d');
 
-    context.drawImage(
-      videoRef.current,
-      0,
-      0,
-      500,
-      300,
-      0,
-      0,
-      667,
-      375
-
-      // container.width,
-      // container.height
-    );
+    context.drawImage(videoRef.current, 0, 0);
 
     canvasRef.current.toBlob(blob => setCardImage(blob), 'image/jpeg', 1);
     setIsCanvasEmpty(false);

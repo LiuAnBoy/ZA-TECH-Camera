@@ -11,9 +11,9 @@ const flashAnimation = keyframes`
 `;
 
 export const Wrapper = styled.div`
-  /* display: flex;
-  flex-flow: column;
-  align-items: center; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
 
@@ -27,7 +27,6 @@ export const Container = styled.div`
   width: 100%;
   /* max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}px`};
   max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`}; */
-  overflow: hidden;
 
   @media (orientation: landscape) {
     width: 100vw !important;
@@ -45,8 +44,8 @@ export const Canvas = styled.canvas`
 
 export const Video = styled.video`
   position: absolute;
-  height: 100vh !important;
-  width: initial !important;
+  /* height: 100vh !important;
+  width: initial !important; */
   /* aspect-ratio: 1.5; */
 
   &::-webkit-media-controls-play-button {
@@ -55,8 +54,8 @@ export const Video = styled.video`
   }
 
   @media (orientation: landscape) {
-    width: 100vw !important;
-    height: initial !important;
+    /* width: 100vw !important;
+    height: initial !important; */
   }
 `;
 
