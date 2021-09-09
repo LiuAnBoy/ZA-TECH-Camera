@@ -12,6 +12,7 @@ import {
   Flash,
   Overlay,
   Button,
+  closeIcon,
 } from './styles';
 
 const CAPTURE_OPTIONS = {
@@ -19,7 +20,7 @@ const CAPTURE_OPTIONS = {
   video: { facingMode: 'environment' },
 };
 
-function Camera({ vehicleType, vehicleAngle }) {
+function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
   const canvasRef = useRef();
   const videoRef = useRef();
 
@@ -67,7 +68,7 @@ function Camera({ vehicleType, vehicleAngle }) {
     context.drawImage(
       videoRef.current,
       0,
-      0,
+      0
       // container.width,
       // container.height,
       // 0,
@@ -116,7 +117,7 @@ function Camera({ vehicleType, vehicleAngle }) {
               // }}
             />
 
-            {/* <Overlay hidden={!isVideoPlaying}>
+            <Overlay hidden={!isVideoPlaying}>
               <img
                 className={
                   vehicleAngle === 'dashboard' ? 'dashboard-img' : 'side-img'
@@ -124,18 +125,18 @@ function Camera({ vehicleType, vehicleAngle }) {
                 src={`./SDK/${vehicleType}/${vehicleAngle}@2x.png`}
                 alt='guide-image'
               />
-            </Overlay> */}
+            </Overlay>
 
             <Canvas
               ref={canvasRef}
               width={document.body.clientWidth}
               height={document.body.clientHeight}
             />
-            {/* 
+
             <Flash
               flash={isFlashing}
               onAnimationEnd={() => setIsFlashing(false)}
-            /> */}
+            />
           </Container>
 
           {isVideoPlaying && <Button onClick={handleCapture} />}

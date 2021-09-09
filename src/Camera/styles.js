@@ -64,10 +64,10 @@ export const Overlay = styled.div`
   align-items: center;
 
   & > img {
-    width: 100%;
-    height: 70%;
-    /* transform: rotate(90deg); */
+    width: 90%;
+    height: 30%;
     z-index: 9999;
+    margin-bottom: 120px;
 
     @media (orientation: landscape) {
       /* transform: rotate(90deg); */
@@ -104,11 +104,26 @@ export const Button = styled.button`
   background: silver;
   z-index: 999;
   position: absolute;
-  bottom: 0;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
 
   @media (orientation: landscape) {
     position: relative;
     left: 60px;
     top: -70px;
+  }
+`;
+
+export const closeIcon = styled.div`
+  z-index: 1000;
+  position: absolute;
+  bottom: 0;
+  width: 30px;
+  height: 30px;
+
+  & > img {
+    width: 30px;
+    height: 30px;
   }
 `;

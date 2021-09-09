@@ -100,3 +100,5 @@ export const Footer = styled.footer`
     margin: 0 10px;
   }
 `;
+
+
