@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
   height: 100vh;
 
   @media (orientation: landscape) {
-    flex-flow: row;
+    width: 100vw;
   }
 `;
 
@@ -30,8 +30,8 @@ export const Container = styled.div`
   overflow: hidden;
 
   @media (orientation: landscape) {
-    width: 75vw;
-    top: -50px;
+    width: 100vw !important;
+    height: 100vh !important;
   }
 `;
 
@@ -49,6 +49,11 @@ export const Video = styled.video`
   &::-webkit-media-controls-play-button {
     display: none !important;
     -webkit-appearance: none;
+  }
+
+  @media (orientation: landscape) {
+    width: 100vw !important;
+    height: initial !important;
   }
 `;
 
@@ -70,9 +75,10 @@ export const Overlay = styled.div`
     margin-bottom: 120px;
 
     @media (orientation: landscape) {
-      /* transform: rotate(90deg); */
-      width: 100%;
-      height: 70%;
+      width: 75%;
+      height: 55%;
+      margin-bottom: 0px;
+      margin-left: -120px;
     }
   }
 `;
@@ -109,9 +115,14 @@ export const Button = styled.button`
   transform: translateX(-50%);
 
   @media (orientation: landscape) {
-    position: relative;
-    left: 60px;
-    top: -70px;
+    position: absolute;
+    right: 35px;
+    left: initial;
+    transform: translateX(0);
+    bottom: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: 0;
   }
 `;
 

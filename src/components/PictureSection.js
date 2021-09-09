@@ -13,20 +13,20 @@ const RootStyled = styled.div`
   bottom: 0;
   right: 0;
   z-index: 1001;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   .picture-container {
     width: 100vw;
     max-width: 100%;
     height: 100vh;
     max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .pic-button-group {
     position: absolute;
-    bottom: 50px;
+    bottom: 20px;
     z-index: 1000;
     width: 100%;
     display: flex;

@@ -92,6 +92,13 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
     return null;
   }
 
+  const landscape = () => {
+    const clientWidth = document.body.clientWidth;
+    const clientHeight = document.body.clientHeight;
+
+    
+  };
+
   return (
     <Measure bounds onResize={handleResize}>
       {({ measureRef }) => (
