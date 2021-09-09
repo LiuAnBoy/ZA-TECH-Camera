@@ -61,12 +61,17 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
   function handleCapture() {
     const context = canvasRef.current.getContext('2d');
 
-    console.log(container);
-
     context.drawImage(
       videoRef.current,
       0,
-      0
+      0,
+      640,
+      360,
+      0,
+      0,
+      667,
+      375
+
       // container.width,
       // container.height
     );
@@ -122,8 +127,8 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
 
             <Canvas
               ref={canvasRef}
-              width={document.body.clientWidth - 40}
-              height={document.body.clientHeight - 10}
+              width={document.body.clientWidth}
+              height={document.body.clientHeight}
             />
 
             {/* <Flash
