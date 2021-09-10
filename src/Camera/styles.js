@@ -56,6 +56,7 @@ export const Video = styled.video`
   @media (orientation: landscape) {
     /* width: 110vw !important; */
     /* height: 110vh !important; */
+    
   }
 `;
 
