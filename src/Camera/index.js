@@ -78,6 +78,29 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
     return null;
   }
 
+  const checkAngleStyle = vehicleAngle => {
+    console.log(vehicleAngle)
+    if(vehicleAngle === 'front') {
+      return 'vehicle-front-img';
+    }
+
+    if(vehicleAngle === 'left') {
+      return 'vehicle-left-img';
+    }
+
+    if(vehicleAngle === 'right') {
+      return 'vehicle-right-img';
+    }
+
+    if(vehicleAngle === 'rear') {
+      return 'vehicle-rear-img';
+    }
+
+    if(vehicleAngle === 'dashboard') {
+      return 'vehicle-dashboard-img';
+    }
+  };
+
   return (
     <Measure bounds onResize={handleResize}>
       {({ measureRef }) => (
@@ -107,9 +130,7 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
 
             <Overlay hidden={!isVideoPlaying}>
               <img
-                className={
-                  vehicleAngle === 'dashboard' ? 'dashboard-img' : 'side-img'
-                }
+                className={checkAngleStyle(vehicleAngle)}
                 src={`./SDK/${vehicleType}/${vehicleAngle}@2x.png`}
                 alt='guide-image'
               />

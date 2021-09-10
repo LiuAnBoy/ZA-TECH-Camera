@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   /* display: flex;
   align-items: center;
   justify-content: center; */
-  width: 100%; 
+  width: 100%;
   /* height: 100%;
 
   @media (orientation: landscape) {
@@ -56,7 +56,6 @@ export const Video = styled.video`
   @media (orientation: landscape) {
     /* width: 110vw !important; */
     /* height: 110vh !important; */
-    
   }
 `;
 
@@ -72,16 +71,62 @@ export const Overlay = styled.div`
   align-items: center;
 
   & > img {
-    width: 90%;
-    height: 30%;
     z-index: 9999;
     margin-bottom: 200px;
 
     @media (orientation: landscape) {
-      width: 60%;
-      height: 70%;
       margin-bottom: 0px;
       margin-left: -120px;
+    }
+  }
+
+  .vehicle-front-img {
+    width: 90%;
+    height: 40%;
+
+    @media (orientation: landscape) {
+      width: 60%;
+      height: 75%;
+    }
+  }
+
+  .vehicle-left-img {
+    width: 90%;
+    height: 30%;
+
+    @media (orientation: landscape) {
+      width: 70%;
+      height: 70%;
+    }
+  }
+
+  .vehicle-right-img {
+    width: 90%;
+    height: 30%;
+
+    @media (orientation: landscape) {
+      width: 70%;
+      height: 70%;
+    }
+  }
+
+  .vehicle-rear-img {
+    width: 90%;
+    height: 40%;
+
+    @media (orientation: landscape) {
+      width: 70%;
+      height: 90%;
+    }
+  }
+
+  .vehicle-dashboard-img {
+    width: 90%;
+    height: 30%;
+
+    @media (orientation: landscape) {
+      width: 70%;
+      height: 70%;
     }
   }
 `;
