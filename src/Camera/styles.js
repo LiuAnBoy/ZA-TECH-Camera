@@ -75,11 +75,11 @@ export const Overlay = styled.div`
     width: 90%;
     height: 30%;
     z-index: 9999;
-    margin-bottom: 120px;
+    margin-bottom: 200px;
 
     @media (orientation: landscape) {
       width: 60%;
-      height: 55%;
+      height: 70%;
       margin-bottom: 0px;
       margin-left: -120px;
     }
