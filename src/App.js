@@ -34,7 +34,7 @@ function App() {
   };
 
   return (
-    <RootStyled >
+    <RootStyled>
       <Head />
       <h4>Please choose vehicle type</h4>
       <VehicleTypeSelect onChange={e => handleVehicleTypeChange(e)}>
@@ -53,7 +53,12 @@ function App() {
         <button
           onClick={e => openCamera(e)}
           value='front'
-          disabled={vehicleType === '' ? true : false}>
+          disabled={vehicleType === '' ? true : false}
+          style={
+            vehicleType === ''
+              ? { backgroundColor: '#d9d9d9', color: '#4d88ff' }
+              : null
+          }>
           Upload
         </button>
       </VehicleAngleSection>
@@ -63,7 +68,12 @@ function App() {
         <button
           onClick={e => openCamera(e)}
           value='left'
-          disabled={vehicleType === '' ? true : false}>
+          disabled={vehicleType === '' ? true : false}
+          style={
+            vehicleType === ''
+              ? { backgroundColor: '#d9d9d9', color: '#4d88ff' }
+              : null
+          }>
           Upload
         </button>
       </VehicleAngleSection>
@@ -73,7 +83,12 @@ function App() {
         <button
           onClick={e => openCamera(e)}
           value='right'
-          disabled={vehicleType === '' ? true : false}>
+          disabled={vehicleType === '' ? true : false}
+          style={
+            vehicleType === ''
+              ? { backgroundColor: '#d9d9d9', color: '#4d88ff' }
+              : null
+          }>
           Upload
         </button>
       </VehicleAngleSection>
@@ -83,7 +98,12 @@ function App() {
         <button
           onClick={e => openCamera(e)}
           value='rear'
-          disabled={vehicleType === '' ? true : false}>
+          disabled={vehicleType === '' ? true : false}
+          style={
+            vehicleType === ''
+              ? { backgroundColor: '#d9d9d9', color: '#4d88ff' }
+              : null
+          }>
           Upload
         </button>
       </VehicleAngleSection>
@@ -93,7 +113,12 @@ function App() {
         <button
           onClick={e => openCamera(e)}
           value='dashboard'
-          disabled={vehicleType === '' ? true : false}>
+          disabled={vehicleType === '' ? true : false}
+          style={
+            vehicleType === ''
+              ? { backgroundColor: '#d9d9d9', color: '#4d88ff' }
+              : null
+          }>
           Upload
         </button>
       </VehicleAngleSection>
@@ -105,7 +130,7 @@ function App() {
         vehicleAngle={vehicleAngle}
       />
 
-      <GlobalStyle isCameraOpen={isCameraOpen}/>
+      <GlobalStyle isCameraOpen={isCameraOpen} />
     </RootStyled>
   );
 }
