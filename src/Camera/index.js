@@ -131,7 +131,7 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
             <Overlay hidden={!isVideoPlaying}>
               <img
                 className={checkAngleStyle(vehicleAngle)}
-                src={`./SDK/${vehicleType}/${vehicleAngle}@2x.png`}
+                src={`./SDK/${vehicleType}/${vehicleAngle}@3x.png`}
                 alt='guide-image'
               />
             </Overlay>
