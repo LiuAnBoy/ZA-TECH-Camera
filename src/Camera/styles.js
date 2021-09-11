@@ -87,6 +87,8 @@ export const Overlay = styled.div`
     @media (orientation: landscape) {
       width: 60%;
       height: 75%;
+      max-width: 400px;
+      max-height: 285px;
     }
   }
 
@@ -97,6 +99,8 @@ export const Overlay = styled.div`
     @media (orientation: landscape) {
       width: 70%;
       height: 70%;
+      max-width: 460px;
+      max-height: 250px;
     }
   }
 
@@ -107,6 +111,8 @@ export const Overlay = styled.div`
     @media (orientation: landscape) {
       width: 70%;
       height: 70%;
+      max-width: 460px;
+      max-height: 250px;
     }
   }
 
@@ -117,6 +123,8 @@ export const Overlay = styled.div`
     @media (orientation: landscape) {
       width: 70%;
       height: 90%;
+      max-width: 400px;
+      max-height: 285px;
     }
   }
 
@@ -127,6 +135,8 @@ export const Overlay = styled.div`
     @media (orientation: landscape) {
       width: 70%;
       height: 70%;
+      max-width: 460px;
+      max-height: 260px;
     }
   }
 `;
