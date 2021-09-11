@@ -19,8 +19,8 @@ const CAPTURE_OPTIONS = {
   audio: false,
   video: {
     facingMode: 'environment',
-    width: document.body.clientWidth,
-    height: document.body.clientHeight,
+    // width: document.body.clientWidth,
+    // height: document.body.clientHeight,
   },
 };
 
