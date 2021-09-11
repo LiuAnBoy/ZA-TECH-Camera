@@ -75,7 +75,7 @@ export const Overlay = styled.div`
     margin-bottom: 200px;
 
     @media (orientation: landscape) {
-      margin-bottom: 0px;
+      margin-bottom: 15px;
       margin-left: -120px;
     }
   }
