@@ -17,7 +17,11 @@ import {
 
 const CAPTURE_OPTIONS = {
   audio: false,
-  video: { facingMode: 'environment' },
+  video: {
+    facingMode: 'environment',
+    width: document.body.clientWidth,
+    height: document.body.clientHeight,
+  },
 };
 
 function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
@@ -48,7 +52,6 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
     setContainer({
       width: document.body.clientWidth,
       height: document.body.clientHeight,
-      // height: 480,
     });
   }
 
@@ -79,24 +82,24 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
   }
 
   const checkAngleStyle = vehicleAngle => {
-    console.log(vehicleAngle)
-    if(vehicleAngle === 'front') {
+    console.log(vehicleAngle);
+    if (vehicleAngle === 'front') {
       return 'vehicle-front-img';
     }
 
-    if(vehicleAngle === 'left') {
+    if (vehicleAngle === 'left') {
       return 'vehicle-left-img';
     }
 
-    if(vehicleAngle === 'right') {
+    if (vehicleAngle === 'right') {
       return 'vehicle-right-img';
     }
 
-    if(vehicleAngle === 'rear') {
+    if (vehicleAngle === 'rear') {
       return 'vehicle-rear-img';
     }
 
-    if(vehicleAngle === 'dashboard') {
+    if (vehicleAngle === 'dashboard') {
       return 'vehicle-dashboard-img';
     }
   };
