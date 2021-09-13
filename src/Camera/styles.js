@@ -44,6 +44,7 @@ export const Canvas = styled.canvas`
 
 export const Video = styled.video`
   position: absolute;
+  object-fit:cover
   /* height: 100vh !important;
   width: initial !important; */
   /* aspect-ratio: 1.5; */

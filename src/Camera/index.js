@@ -19,8 +19,6 @@ const CAPTURE_OPTIONS = {
   audio: false,
   video: {
     facingMode: 'environment',
-    // width: document.body.clientWidth,
-    // height: document.body.clientHeight,
   },
 };
 
@@ -65,6 +63,8 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
     const context = canvasRef.current.getContext('2d');
 
     context.drawImage(videoRef.current, 0, 0);
+
+    console.log('width', videoRef.current.width);
 
     canvasRef.current.toBlob(blob => setCardImage(blob), 'image/jpeg', 1);
     setIsCanvasEmpty(false);

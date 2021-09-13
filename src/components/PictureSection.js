@@ -35,12 +35,18 @@ const RootStyled = styled.div`
 
   .pic-accept {
     color: white;
-    font-size: 18px;
+    font-size: 20px;
+    background-color: #ff8c1a;
+    padding: 10px 28px; 
+    border-radius: 8px;
   }
 
   .pic-recap {
     color: white;
-    font-size: 18px;
+    font-size: 20px;
+    background-color: #ff8c1a;
+    padding: 10px 28px; 
+    border-radius: 8px;
   }
 `;
 
