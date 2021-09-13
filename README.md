@@ -24,3 +24,13 @@ WebRTC function
 > handleCapture - capture image
 >
 > handleClear - clean image
+
+### Callback function - src/components PictureSection.js
+
+onPictureSend 
+>
+>     callbackObj = {
+>         type: vehicleType,
+>         angle: vehicleAngle,
+>         blob: cardImage
+>     }
