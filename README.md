@@ -25,7 +25,7 @@ WebRTC function
 >
 > handleClear - clean image
 
-### Callback function - src/components PictureSection.js
+### Callback function - src/components/PictureSection.js
 
 onPictureSend 
 >
