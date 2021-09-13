@@ -2,17 +2,13 @@ import React, { useState, useRef } from 'react';
 import Measure from 'react-measure';
 import PictureSection from '../components/PictureSection';
 import { useUserMedia } from '../hooks/useUserMedia';
-import { useCardRatio } from '../hooks/useCardRatio';
-import { useOffsets } from '../hooks/useOffset';
 import {
   Video,
   Canvas,
   Wrapper,
   Container,
-  Flash,
   Overlay,
   Button,
-  closeIcon,
 } from './styles';
 
 const CAPTURE_OPTIONS = {
@@ -29,17 +25,9 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
   const [container, setContainer] = useState({ width: 0, height: 0 });
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isCanvasEmpty, setIsCanvasEmpty] = useState(true);
-  const [isFlashing, setIsFlashing] = useState(false);
   const [cardImage, setCardImage] = useState();
 
   const mediaStream = useUserMedia(CAPTURE_OPTIONS);
-  const [aspectRatio, calculateRatio] = useCardRatio(1.586);
-  const offsets = useOffsets(
-    videoRef.current && videoRef.current.videoWidth,
-    videoRef.current && videoRef.current.videoHeight,
-    container.width,
-    container.height
-  );
 
   if (mediaStream && videoRef.current && !videoRef.current.srcObject) {
     videoRef.current.srcObject = mediaStream;
@@ -54,7 +42,6 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
   }
 
   function handleCanPlay() {
-    // calculateRatio(videoRef.current.videoHeight, videoRef.current.videoWidth);
     setIsVideoPlaying(true);
     videoRef.current.play();
   }
@@ -64,11 +51,8 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
 
     context.drawImage(videoRef.current, 0, 0);
 
-    console.log('width', videoRef.current.width);
-
     canvasRef.current.toBlob(blob => setCardImage(blob), 'image/jpeg', 1);
     setIsCanvasEmpty(false);
-    setIsFlashing(true);
   }
 
   function handleClear() {
@@ -108,16 +92,7 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
     <Measure bounds onResize={handleResize}>
       {({ measureRef }) => (
         <Wrapper>
-          <Container
-            ref={measureRef}
-            // maxHeight={videoRef.current && videoRef.current.videoHeight}
-            // maxWidth={videoRef.current && videoRef.current.videoWidth}
-            style={
-              {
-                // height: `${container.height}px`,
-                // width: `${container.width}px`
-              }
-            }>
+          <Container ref={measureRef}>
             <Video
               ref={videoRef}
               hidden={!isVideoPlaying}
@@ -125,10 +100,6 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
               autoPlay
               playsInline
               muted
-              // style={{
-              //   top: `-${offsets.y}px`,
-              //   left: `-${offsets.x}px`,
-              // }}
             />
 
             <Overlay hidden={!isVideoPlaying}>
@@ -141,14 +112,9 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
 
             <Canvas
               ref={canvasRef}
-              width={document.body.clientWidth}
-              height={document.body.clientHeight}
+              width={container.width}
+              height={container.height}
             />
-
-            {/* <Flash
-              flash={isFlashing}
-              onAnimationEnd={() => setIsFlashing(false)}
-            /> */}
           </Container>
 
           {isVideoPlaying && <Button onClick={handleCapture} />}

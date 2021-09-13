@@ -37,7 +37,7 @@ const RootStyled = styled.div`
     color: white;
     font-size: 20px;
     background-color: #ff8c1a;
-    padding: 10px 28px; 
+    padding: 10px 28px;
     border-radius: 8px;
   }
 
@@ -45,7 +45,7 @@ const RootStyled = styled.div`
     color: white;
     font-size: 20px;
     background-color: #ff8c1a;
-    padding: 10px 28px; 
+    padding: 10px 28px;
     border-radius: 8px;
   }
 `;

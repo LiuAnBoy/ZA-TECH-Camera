@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Camera from '../Camera/index';
 
 import styled from 'styled-components';
@@ -16,10 +16,9 @@ const CameraSection = ({
   return (
     <RootStyled style={{ display: isCameraOpen ? 'initial' : 'none' }}>
       {isCameraOpen && (
-        <div className="camera-container">
+        <div className='camera-container'>
           <Camera vehicleAngle={vehicleAngle} vehicleType={vehicleType} />
           <div>
-            {/* <input type='file' accept='image/*' capture='filesystem' /> */}
             <div className='closeCamera' onClick={closeCameraSection}>
               X
             </div>
