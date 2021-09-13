@@ -1,10 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Head from './components/Head';
-import Camera from './Camera/index';
 import {
-  Root,
-  Preview,
-  Footer,
   GlobalStyle,
   VehicleTypeSelect,
   RootStyled,

@@ -11,52 +11,33 @@ const flashAnimation = keyframes`
 `;
 
 export const Wrapper = styled.div`
-  /* display: flex;
+  display: flex;
   align-items: center;
-  justify-content: center; */
-  /* width: 100%; */
-  /* height: 100%;
+  justify-content: center;
 
-  @media (orientation: landscape) {
-    /* width: 100vw; */
-  /* } */
 `;
 
 export const Container = styled.div`
   position: relative;
   width: 100%;
-  /* max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}px`};
-  max-height: ${({ maxHeight }) => maxHeight && `${maxHeight}px`}; */
 
-  @media (orientation: landscape) {
-    /* width: 100% !important; */
-    /* height: initial !important; */
-  }
 `;
 
 export const Canvas = styled.canvas`
-  /* position: absolute;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
-  right: 0; */
+  right: 0;
 `;
 
 export const Video = styled.video`
   position: absolute;
   object-fit:cover
-  /* height: 100vh !important;
-  width: initial !important; */
-  /* aspect-ratio: 1.5; */
 
   &::-webkit-media-controls-play-button {
     display: none !important;
     -webkit-appearance: none;
-  }
-
-  @media (orientation: landscape) {
-    /* width: 110vw !important; */
-    /* height: 110vh !important; */
   }
 `;
 
