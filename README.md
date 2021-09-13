@@ -19,7 +19,7 @@ WebRTC function
 ### import useUserMedia into src/camera/index.js
 
 
-### function
+### function - Camera/index.js
 
 > handleCapture - capture image
 >
