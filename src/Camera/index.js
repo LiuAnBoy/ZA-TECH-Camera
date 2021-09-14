@@ -2,14 +2,7 @@ import React, { useState, useRef } from 'react';
 import Measure from 'react-measure';
 import PictureSection from '../components/PictureSection';
 import { useUserMedia } from '../hooks/useUserMedia';
-import {
-  Video,
-  Canvas,
-  Wrapper,
-  Container,
-  Overlay,
-  Button,
-} from './styles';
+import { Video, Canvas, Wrapper, Container, Overlay, Button } from './styles';
 
 const CAPTURE_OPTIONS = {
   audio: false,
@@ -34,7 +27,6 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
   }
 
   function handleResize(contentRect) {
-    console.log(contentRect);
     setContainer({
       width: document.body.clientWidth,
       height: document.body.clientHeight,
@@ -49,7 +41,13 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
   function handleCapture() {
     const context = canvasRef.current.getContext('2d');
 
-    context.drawImage(videoRef.current, 0, 0);
+    console.log(videoRef.current.videoWidth, videoRef.current.videoHeight);
+
+    context.drawImage(
+      videoRef.current,
+      0,
+      0,
+    );
 
     canvasRef.current.toBlob(blob => setCardImage(blob), 'image/jpeg', 1);
     setIsCanvasEmpty(false);
@@ -66,7 +64,6 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
   }
 
   const checkAngleStyle = vehicleAngle => {
-    console.log(vehicleAngle);
     if (vehicleAngle === 'front') {
       return 'vehicle-front-img';
     }
@@ -112,8 +109,8 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
 
             <Canvas
               ref={canvasRef}
-              width={container.width}
-              height={container.height}
+              width={videoRef.current && videoRef.current.videoWidth}
+              height={videoRef.current && videoRef.current.videoHeight}
             />
           </Container>
 
