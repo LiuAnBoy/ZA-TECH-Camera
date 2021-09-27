@@ -1,4 +1,5 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const RootStyled = styled.div`
@@ -65,14 +66,60 @@ const PictureSection = ({
   vehicleType,
   vehicleAngle,
 }) => {
+  const [dataURL, setDataURL] = useState();
+
   const callBackObj = {
-    type: vehicleType,
-    angle: vehicleAngle,
+    // type: vehicleType,
+    // angle: vehicleAngle,
+    fileName: `${vehicleType}-${vehicleAngle}.jpeg`,
     blob: cardImage,
   };
 
+  const apiUrl = 'https://devision-test.xmine.com.tw/';
+
+  const headers = {
+    Authorization: 'Basic Ymx1ci10ZXN0OnRlc3Rlci1ibHVy',
+    'Content-Type': 'multipart/form-data',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': true,
+    'Access-Control-Allow-Methods': 'POST',
+    'Access-Control-Allow-Headers': '*',
+  };
+
+  const blobtoDataURL = (blob, callback) => {
+    const fr = new FileReader();
+    fr.onload = function (e) {
+      callback(e.target.result);
+    };
+    fr.readAsDataURL(blob);
+  };
+
+  console.log('123');
+
   const onPictureSend = () => {
-    console.log(callBackObj);
+    blobtoDataURL(cardImage, dataURL => {
+      setDataURL(dataURL);
+    });
+
+    const data = new FormData();
+    data.append('', cardImage);
+
+
+    const obj = {
+      fileName: `${vehicleType}-${vehicleAngle}.jpeg`,
+      image: cardImage,
+    };
+
+    axios
+      .post('/api/image', data, {
+        headers: {
+          Authorization: 'Basic Ymx1ci10ZXN0OnRlc3Rlci1ibHVy',
+          'Content-Type': 'multipart/form-data',
+        },
+        withCredentials: true,
+      })
+      .then(res => console.log(res.data[0].blur))
+      .catch(error => console.log(error));
   };
 
   return (
