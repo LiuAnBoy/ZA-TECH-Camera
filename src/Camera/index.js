@@ -116,6 +116,7 @@ function Camera({ vehicleType, vehicleAngle, handleCameraClose }) {
               vehicleAngle={vehicleAngle}
               cardImage={cardImage}
               onPictureClose={handleClear}
+              handleCameraClose={handleCameraClose}
             />
           )}
         </Wrapper>

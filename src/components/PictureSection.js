@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import CheckModal from './CheckModal';
 
 const RootStyled = styled.div`
   width: 100vw;
@@ -63,63 +64,50 @@ export const Canvas = styled.canvas`
 const PictureSection = ({
   cardImage,
   onPictureClose,
+  handleCameraClose,
   vehicleType,
   vehicleAngle,
 }) => {
-  const [dataURL, setDataURL] = useState();
+  const [isOpen, setIsOpen] = useState(false);
+  const [quality, setQuality] = useState();
+  // const callBackObj = {
+  //   // type: vehicleType,
+  //   // angle: vehicleAngle,
+  //   fileName: `${vehicleType}-${vehicleAngle}.jpeg`,
+  //   blob: cardImage,
+  // };
 
-  const callBackObj = {
-    // type: vehicleType,
-    // angle: vehicleAngle,
-    fileName: `${vehicleType}-${vehicleAngle}.jpeg`,
-    blob: cardImage,
+  const handleModalClose = () => {
+    setIsOpen(false);
   };
 
-  const apiUrl = 'https://devision-test.xmine.com.tw/';
-
-  const headers = {
-    Authorization: 'Basic Ymx1ci10ZXN0OnRlc3Rlci1ibHVy',
-    'Content-Type': 'multipart/form-data',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Credentials': true,
-    'Access-Control-Allow-Methods': 'POST',
-    'Access-Control-Allow-Headers': '*',
+  const handleModalOpen = () => {
+    setIsOpen(true);
   };
 
-  const blobtoDataURL = (blob, callback) => {
-    const fr = new FileReader();
-    fr.onload = function (e) {
-      callback(e.target.result);
-    };
-    fr.readAsDataURL(blob);
-  };
-
-  console.log('123');
-
-  const onPictureSend = () => {
-    blobtoDataURL(cardImage, dataURL => {
-      setDataURL(dataURL);
-    });
-
+  const onPictureSend = async () => {
     const data = new FormData();
     data.append('', cardImage);
-
 
     const obj = {
       fileName: `${vehicleType}-${vehicleAngle}.jpeg`,
       image: cardImage,
     };
 
-    axios
-      .post('/api/image', data, {
+    try {
+      const res = await axios.post('/api/image', data, {
         headers: {
           Authorization: 'Basic Ymx1ci10ZXN0OnRlc3Rlci1ibHVy',
           'Content-Type': 'multipart/form-data',
         },
         withCredentials: true,
-      })
-      .then(res => console.log(res.data[0].blur))
-      .catch(error => console.log(error));
+      });
+
+      setQuality(res.data[0].blur);
+      handleModalOpen();
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -136,6 +124,14 @@ const PictureSection = ({
           Retake
         </div>
       </div>
+
+      <CheckModal
+        isOpen={isOpen}
+        handleModalClose={handleModalClose}
+        handlePictureClose={onPictureClose}
+        Quality={quality}
+        handleCameraClose={handleCameraClose}
+      />
     </RootStyled>
   );
 };

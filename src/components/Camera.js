@@ -17,7 +17,7 @@ const CameraSection = ({
     <RootStyled style={{ display: isCameraOpen ? 'initial' : 'none' }}>
       {isCameraOpen && (
         <div className='camera-container'>
-          <Camera vehicleAngle={vehicleAngle} vehicleType={vehicleType} />
+          <Camera vehicleAngle={vehicleAngle} vehicleType={vehicleType} handleCameraClose={closeCameraSection}/>
           <div>
             <div className='closeCamera' onClick={closeCameraSection}>
               X
