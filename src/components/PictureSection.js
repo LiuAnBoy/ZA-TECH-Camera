@@ -89,10 +89,10 @@ const PictureSection = ({
     const data = new FormData();
     data.append('', cardImage);
 
-    const obj = {
-      fileName: `${vehicleType}-${vehicleAngle}.jpeg`,
-      image: cardImage,
-    };
+    // const obj = {
+    //   fileName: `${vehicleType}-${vehicleAngle}.jpeg`,
+    //   image: cardImage,
+    // };
 
     try {
       const res = await axios.post('/api/image', data, {
@@ -104,6 +104,10 @@ const PictureSection = ({
       });
 
       setQuality(res.data[0].blur);
+
+      if (res.data[0].blur === 1) {
+        return res.data;
+      }
       handleModalOpen();
     } catch (error) {
       console.log(error.message);
