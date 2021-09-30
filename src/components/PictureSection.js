@@ -106,14 +106,6 @@ const PictureSection = ({
 
       setQuality(res.data[0].blur);
 
-      if (res.data[0].blur === 1) {
-        return res.data;
-      } 
-
-      if (res.data[0].blur === 0) {
-        return null;
-      } 
-
       handleModalOpen();
     } catch (error) {
       console.log(error.message);
